@@ -50,5 +50,8 @@ def checkout(cart, coupons)
   clear_coup_cart.each{|hash|
     total+=(hash[1][:price]*hash[1][:count])
   }
+  
+  if total>100
+    total += ()
   total
 end
