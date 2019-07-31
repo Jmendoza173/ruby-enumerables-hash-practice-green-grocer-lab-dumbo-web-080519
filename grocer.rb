@@ -31,7 +31,7 @@ def apply_clearance(cart)
   # code here
   cart.each{|hash|
     if hash[1][:clearance] == true
-      hash[1][:price] -= (hash[1][:price]*0.20)
+      hash[1][:price] -= (hash[1][:price]*0.2)
     end
   }
 end
@@ -39,5 +39,11 @@ end
 def checkout(cart, coupons)
   # code here
   cList = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
-  
+  cList.each{|hash|
+    total += hash[1][:price]
+  }
+  if total>100
+    total -= (total*0.1)
+  end
+  total
 end
