@@ -108,7 +108,7 @@ describe "Grocer" do
         expect(irrelevant.keys).to_not include("AVOCADO")
       end
 
-      xit "can apply multiple coupons" do
+      it "can apply multiple coupons" do
         avocado = find_item('AVOCADO')
         cheese = find_item('CHEESE')
         cart = Array.new(4, cheese)
