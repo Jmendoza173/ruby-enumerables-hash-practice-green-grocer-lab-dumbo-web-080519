@@ -38,7 +38,8 @@ end
 
 def checkout(cart, coupons)
   # code here
-  cList = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
+  consolidate_cart(cart)
+  #cList = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
   cList.each{|hash|
     total += hash[1][:price]
   }
