@@ -16,16 +16,17 @@ end
 
 def apply_coupons(cart, coupons)
   # code here
-  coup_count=0
+  coup_count = 0
   coupons.each{ |coup_hash|
-    if cart.has_key?(coup_hash[:item]) && cart[coup_hash[:item]][:count]>=coup_hash[:num]
+    if cart.has_key?(coup_hash[:item]) && cart[coup_hash[:item]][:count]>=coup_hash[:num] && !cart.has_key?("#{coup_hash[:item]} W/COUPON")
       cart[coup_hash[:item]][:count]-=coup_hash[:num]
       nPrice = coup_hash[:cost]/coup_hash[:num]
-      cItem ="#{coup_hash[:item]} W/COUPON"
-      cart[cItem] = {price: nPrice, clearance: cart[coup_hash[:item]][:clearance], count: coup_hash[:num] }
-      coup_count+=1
+      cart["#{coup_hash[:item]} W/COUPON"] = {price: nPrice, clearance: cart[coup_hash[:item]][:clearance], count: coup_hash[:num] }
+    elsif cart.has_key?(coup_hash[:item]) && cart[coup_hash[:item]][:count]>=coup_hash[:num] && cart.has_key?("#{coup_hash[:item]} W/COUPON")
+      coup_count +=1
+      cart[coup_hash[:item]][:count]-=coup_hash[:num]
+      cart["#{coup_hash[:item]} W/COUPON"][:count]+= coup_hash[:num]
     end
-    
   }
   cart
 end
