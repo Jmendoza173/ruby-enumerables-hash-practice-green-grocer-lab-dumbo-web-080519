@@ -24,7 +24,7 @@ def apply_coupons(cart, coupons)
       cItem ="#{coup_hash[:item]} W/COUPON"
       cart[cItem] = {price: nPrice, clearance: cart[coup_hash[:item]][:clearance], count: coup_hash[:num] }
     end
-    count+=1
+    coup_count+=1
   }
   cart
 end
