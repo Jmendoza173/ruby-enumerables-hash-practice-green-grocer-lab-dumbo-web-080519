@@ -45,7 +45,7 @@ def checkout(cart, coupons)
   total = 0
   nCart = consolidate_cart(cart)
   coup_cart = apply_coupons(nCart)
-  nCart.each{|hash|
+  coup_cart.each{|hash|
     total+=hash[1][:price]
   }
   total
