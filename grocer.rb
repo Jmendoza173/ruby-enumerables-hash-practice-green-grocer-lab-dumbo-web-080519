@@ -23,6 +23,7 @@ def apply_coupons(cart, coupons)
       nPrice = coup_hash[:cost]/coup_hash[:num]
       cItem ="#{coup_hash[:item]} W/COUPON"
       cart[cItem] = {price: nPrice, clearance: cart[coup_hash[:item]][:clearance], count: coup_hash[:num] }
+      
     end
     coup_count+=1
   }
