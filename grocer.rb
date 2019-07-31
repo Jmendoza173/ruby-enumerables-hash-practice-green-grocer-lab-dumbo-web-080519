@@ -16,6 +16,7 @@ end
 
 def apply_coupons(cart, coupons)
   # code here
+  coup_count=0
   coupons.each{ |coup_hash|
     if cart.has_key?(coup_hash[:item]) && cart[coup_hash[:item]][:count]>=coup_hash[:num]
       cart[coup_hash[:item]][:count]-=coup_hash[:num]
@@ -23,6 +24,7 @@ def apply_coupons(cart, coupons)
       cItem ="#{coup_hash[:item]} W/COUPON"
       cart[cItem] = {price: nPrice, clearance: cart[coup_hash[:item]][:clearance], count: coup_hash[:num] }
     end
+    count+=1
   }
   cart
 end
